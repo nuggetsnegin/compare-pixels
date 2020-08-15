@@ -1,15 +1,50 @@
+import { useRef, useState } from 'react';
 import Chevron from '../public/images/Chevron.svg';
 
 export default function Form() {
+  /* Using hook 'useRef', initializing as empty
+  src: https://react-hooks-cheatsheet.com/useRef*/
+  const imageUploader = useRef(null);
+
+  const [image, setImage] = useState(null);
+
+  const onSubmit = (e) => {
+    /*prevent page from refreshing*/
+    e.preventDefault();
+  };
+
+  const handleImageUpload = (e) => {
+    const imageUploaded = e.target.files;
+
+    if (imageUploaded && imageUploaded.length > 0) {
+    }
+  };
+
   return (
     /*NOTE 1: putting the form inside a main because semantically the form is the 'main' content of the page.*/
     <main>
-      <form>
+      <form onSubmit={onSubmit}>
         <fieldset>
           <div className="form-container">
             <div className="step-one-container">
               <label className="step-labels">Step one</label>
-              <button className="upload-img">Upload image</button>
+              <input
+                name="step-one"
+                id="step-one"
+                type="file"
+                accept="image/*"
+                multiple={false}
+                style={{ display: 'none' }}
+                ref={imageUploader}
+                onChange={handleImageUpload}
+              />
+              <button
+                type="button" /*default submit, will submit form before image is picked*/
+                className="upload-img"
+                onClick={() => imageUploader.current.click()}
+              >
+                Upload image
+              </button>
             </div>
             <div className="step-two-container">
               <label htmlFor="step-two" className="step-labels step-two">
