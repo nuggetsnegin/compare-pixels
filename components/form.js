@@ -7,12 +7,14 @@ export default function Form() {
   const imageUploader = useRef(null);
 
   const [image, setImage] = useState(null);
-  console.log(image);
+  const [website, setWebsite] = useState(null);
 
   const onSubmit = (e) => {
     /*prevent page from refreshing*/
     e.preventDefault();
+    console.log(e);
   };
+  console.log(website);
 
   const handleImageUpload = (e) => {
     const imageUploaded = e.target.files;
@@ -64,6 +66,7 @@ export default function Form() {
                 type="text"
                 placeholder="Enter website URL"
                 className="website-input"
+                onChange={(e) => setWebsite(e.target.value)}
               />
             </div>
           </div>
