@@ -2,24 +2,14 @@ import Chevron from '../public/images/Chevron.svg';
 
 export default function Form() {
   return (
-    /*NOTE 1: putting the form inside a main because semantically the form is the 'main' content of the page.
-      NOTE 2: using input with type of file but giving it a class of hidden so I can overwrite the default styling/text ('No file chosen'),
-            using 'for' as the reference key. More semantic than just using a button, but also awkward with the extra span acting as the label, open to feedback! */
+    /*NOTE 1: putting the form inside a main because semantically the form is the 'main' content of the page.*/
     <main>
       <form>
         <fieldset>
           <div className="form-container">
             <div className="step-one-container">
-              <span className="step-labels">Step one</span>
-              <label htmlFor="step-one" className="upload-img">
-                Upload image
-              </label>
-              <input
-                name="step-one"
-                id="step-one"
-                type="file"
-                className="hidden"
-              />
+              <label className="step-labels">Step one</label>
+              <button className="upload-img">Upload image</button>
             </div>
             <div className="step-two-container">
               <label htmlFor="step-two" className="step-labels step-two">
@@ -67,20 +57,19 @@ export default function Form() {
           background: none;
           padding: 0;
           border: none;
-          position: relative;
-          top: -40px;
-          left: 456px;
+          cursor: pointer;
         }
-        .upload-img:hover,
-        .upload-img:focus {
-          background: rgba(0, 0, 0, 0.7);
+        button:focus {
+          outline-color: #6536d3;
         }
         .oval {
           width: 34px;
           height: 34px;
           background-image: linear-gradient(to bottom, #8855ff, #6536d3);
           border-radius: 50%;
-          cursor: pointer;
+          position: relative;
+          top: -40px;
+          left: 456px;
         }
         .chevron {
           position: relative;
