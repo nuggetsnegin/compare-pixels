@@ -7,6 +7,7 @@ export default function Form() {
   const imageUploader = useRef(null);
 
   const [image, setImage] = useState(null);
+  console.log(image);
 
   const onSubmit = (e) => {
     /*prevent page from refreshing*/
@@ -17,6 +18,13 @@ export default function Form() {
     const imageUploaded = e.target.files;
 
     if (imageUploaded && imageUploaded.length > 0) {
+      /*load image to URL so we can use as an image src value to pass as a prop
+      src: https://developer.mozilla.org/en-US/docs/Web/API/URL/createObjectURL*/
+      const imageURL = URL.createObjectURL(imageUploaded[0]);
+      setImage(imageURL);
+    } else {
+      /*clears the image on cancel, may not be the best UX? open to feedback about this decision*/
+      setImage(null);
     }
   };
 
