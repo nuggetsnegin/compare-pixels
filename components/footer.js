@@ -13,10 +13,12 @@ export default function Footer() {
           background-image: linear-gradient(to bottom, #4a4a4a, #222222 125%);
           width: 100vw;
           height: 10vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
         p {
-          color: #ffffff;
-          text-align: center;
+          color: #ffffff; /*fallback for alt text*/
         }
       `}</style>
     </footer>
