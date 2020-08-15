@@ -16,6 +16,7 @@ export default function Footer() {
           display: flex;
           justify-content: center;
           align-items: center;
+          flex-shrink: 0;
         }
         p {
           color: #ffffff; /*fallback for alt text*/

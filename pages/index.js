@@ -1,6 +1,6 @@
-import Head from 'next/head'
-import Header from '../components/header'
-import Footer from '../components/footer'
+import Head from 'next/head';
+import Header from '../components/header';
+import Footer from '../components/footer';
 
 export default function Home() {
   return (
@@ -9,16 +9,21 @@ export default function Home() {
         <title>Compare Pixels</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
-      <Footer/>
+      <div className="content">
+        <Header />
+      </div>
+      <Footer />
 
       <style jsx>{`
-        .wrapper {
-          width: 1024px;
-          height: 800px;
-          border: 1px solid red;
+        .content {
+          flex: 1 0 auto;
+        }
+        .container {
+          display: flex;
+          flex-direction: column;
+          min-height: 100vh;
         }
       `}</style>
     </div>
-  )
+  );
 }
