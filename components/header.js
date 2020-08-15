@@ -10,6 +10,8 @@ export default function Header(){
                 .header-container{
                     margin-top: 180px;
                     text-align: center;
+                    width: 1024px;
+                    border: 1px solid red;
                 }
                 h1{
                     color: #222222;

@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Header from '../components/header'
+import Footer from '../components/footer'
 
 export default function Home() {
   return (
@@ -8,10 +9,11 @@ export default function Home() {
         <title>Compare Pixels</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header/>
+      <Header />
+      <Footer/>
 
       <style jsx>{`
-        .container {
+        .wrapper {
           width: 1024px;
           height: 800px;
           border: 1px solid red;
