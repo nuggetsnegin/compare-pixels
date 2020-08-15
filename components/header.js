@@ -24,6 +24,7 @@ export default function Header() {
           font-size: 1.6rem;
           margin-top: 17px;
           padding: 0px 292px;
+          margin-bottom: 0px;
         }
       `}</style>
     </div>

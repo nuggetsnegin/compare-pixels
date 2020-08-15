@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Header from '../components/header';
+import Form from '../components/form';
 import Footer from '../components/footer';
 
 export default function Home() {
@@ -11,7 +12,9 @@ export default function Home() {
       </Head>
       <div className="content">
         <Header />
+        <Form />
       </div>
+
       <Footer />
 
       <style jsx>{`
