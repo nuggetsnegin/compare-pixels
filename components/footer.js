@@ -1,7 +1,11 @@
+import AProjectbyPastel from '../public/images/AProjectbyPastel.svg';
+
 export default function Footer() {
   return (
     <footer>
-      <p>A Project by Pastel</p>
+      <p>
+        <img src={AProjectbyPastel} alt="Pastel logo in white" />
+      </p>
 
       <style jsx>{`
         footer {
