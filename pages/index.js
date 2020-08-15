@@ -12,12 +12,9 @@ export default function Home() {
 
       <style jsx>{`
         .container {
-          min-height: 100vh;
-          padding: 0 0.5rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
+          width: 1024px;
+          height: 800px;
+          border: 1px solid red;
         }
       `}</style>
     </div>
