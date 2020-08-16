@@ -13,7 +13,8 @@ export default function Footer() {
         <div className="feedback">
           <p className="feedback-question">Spot any issues on the website?</p>
           <p className="feedback-link">
-            Share feedback on live websites with Pastel Get started now
+            Share feedback on live websites with Pastel{' '}
+            <span>Get started now</span>
           </p>
         </div>
       </div>
@@ -50,6 +51,7 @@ export default function Footer() {
           margin-right: 40px;
         }
         .feedback-question {
+          margin-bottom: 3px;
           font-weight: bold;
           width: 225px;
         }
@@ -75,6 +77,9 @@ export default function Footer() {
           border-bottom: solid 1.6px #ffffff;
           outline: none;
           height: 25px; /*fix height jump*/
+        }
+        span {
+          text-decoration: underline;
         }
       `}</style>
     </footer>
