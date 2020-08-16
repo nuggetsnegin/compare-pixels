@@ -1,13 +1,19 @@
 import FooterCompare from '../components/FooterCompare';
 export default function Result(props) {
+  const getImageDimensions = () => {};
   return (
     <main>
       <div className="card">
         <div className="card-inner">
-          {/* <img src={props ? props.props.image : 'No image uploaded.'} /> */}
-          {/* <iframe>
-            {props ? props.props.website : 'No website provided.'}
-          </iframe> */}
+          <img
+            style={{ display: 'None' }}
+            src={props ? props.props.image : 'No image uploaded.'}
+          />
+          <iframe
+            style={{ display: 'None' }}
+            src={props ? props.props.website : 'No website provided.'}
+          ></iframe>
+          <div className="active"></div>
         </div>
       </div>
       <FooterCompare />

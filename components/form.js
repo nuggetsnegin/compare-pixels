@@ -10,21 +10,23 @@ export default function Form() {
 
   const [image, setImage] = useState(null);
   const [website, setWebsite] = useState('');
+  const [proxyUrl, setProxyUrl] = useState(null);
   const [showError, setShowError] = useState(null);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   /* showError wasn't updating state correctly when setting it onSubmit (or anywhere), useEffect listens to showError changing
   if it changes we call redirectForm*/
   useEffect(() => {
-    redirectForm();
-  }, [showError]);
+    validateAndRedirectForm();
+  }, [image, isSubmitted, showError, proxyUrl]);
 
   /*calling everytime the showError flag changes*/
-  const redirectForm = () => {
+  const validateAndRedirectForm = () => {
     /*check whether to redirect, only redirect if there's no error, image and website exists*/
-    if (!showError && website && image) {
+    if (isSubmitted && !showError && proxyUrl && image) {
       router.push({
         pathname: '/result',
-        query: { image: image, website: website },
+        query: { image: image, website: proxyUrl },
       });
     }
   };
@@ -32,6 +34,7 @@ export default function Form() {
     /*prevent page from refreshing*/
     e.preventDefault();
     usePastelProxy();
+    setIsSubmitted(true);
   };
 
   const handleImageUpload = (e) => {
@@ -41,9 +44,11 @@ export default function Form() {
       /*load image to URL so we can use as an image src value to pass as a prop
       src: https://developer.mozilla.org/en-US/docs/Web/API/URL/createObjectURL*/
       const imageURL = URL.createObjectURL(imageUploaded[0]);
+      setIsSubmitted(false);
       setImage(imageURL);
     } else {
       /*clears the image on cancel, may not be the best UX? open to feedback about this decision*/
+      setIsSubmitted(false);
       setImage(null);
     }
   };
@@ -51,7 +56,6 @@ export default function Form() {
   const validateWebsiteURL = () => {
     let isValidURL = false;
     if (website.startsWith('https://') || website.startsWith('http://')) {
-      console.log('valid url');
       isValidURL = true;
       setShowError(false);
     } else {
@@ -63,7 +67,7 @@ export default function Form() {
   const usePastelProxy = async () => {
     let isValidURL = validateWebsiteURL();
     /*using axios because fetch isnt available for all browsers, IE/Opera*/
-    if (isValidURL === true) {
+    if (isValidURL) {
       const response = await fetch(
         'https://api.pastelcanvases.com/verify-url',
         {
@@ -80,7 +84,7 @@ export default function Form() {
       );
       const result = await response.json();
       setShowError(false);
-      setWebsite(result.proxyURL.href);
+      setProxyUrl(result.proxyURL.href);
     } else {
       setShowError(true);
     }
@@ -93,7 +97,8 @@ export default function Form() {
         <fieldset>
           <div className="form-container">
             <div className="step-one-container">
-              <label className="step-labels">Step one</label>
+              <label className="step-labels">Step one</label>{' '}
+              {isSubmitted && image === null ? 'No Image Uploaded' : null}
               <input
                 name="step-one"
                 id="step-one"
