@@ -8,7 +8,6 @@ export default function Header() {
       <style jsx>{`
         .header-container {
           margin: 0 auto;
-          border: 1px solid red;
           margin-top: 180px;
           text-align: center;
           width: 55vw;
@@ -17,15 +16,15 @@ export default function Header() {
           color: #222222;
           font-weight: 700;
           font-size: 2.6rem;
-          margin-bottom: 0px;
+          margin-bottom: 17px;
         }
         h2 {
           color: #888888;
           font-weight: 400;
           font-size: 1.6rem;
           margin-top: 17px;
-          padding: 0px 292px;
-          margin-bottom: 0px;
+          width: 440px;
+          margin: 0 auto;
         }
       `}</style>
     </div>

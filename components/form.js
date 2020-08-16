@@ -1,6 +1,5 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import axios from 'axios';
 import Chevron from '../public/images/Chevron.svg';
 
 export default function Form() {
@@ -11,18 +10,28 @@ export default function Form() {
 
   const [image, setImage] = useState(null);
   const [website, setWebsite] = useState('');
-  const [showError, setShowError] = useState(false);
+  const [showError, setShowError] = useState(null);
 
-  const onSubmit = (e) => {
-    /*prevent page from refreshing*/
-    e.preventDefault();
-    usePastelProxy();
-    if (!showError) {
+  /* showError wasn't updating state correctly when setting it onSubmit (or anywhere), useEffect listens to showError changing
+  if it changes we call redirectForm*/
+  useEffect(() => {
+    redirectForm();
+  }, [showError]);
+
+  /*calling everytime the showError flag changes*/
+  const redirectForm = () => {
+    /*check whether to redirect, only redirect if there's no error, image and website exists*/
+    if (!showError && website && image) {
       router.push({
         pathname: '/result',
         query: { image: image, website: website },
       });
     }
+  };
+  const onSubmit = (e) => {
+    /*prevent page from refreshing*/
+    e.preventDefault();
+    usePastelProxy();
   };
 
   const handleImageUpload = (e) => {
@@ -94,6 +103,7 @@ export default function Form() {
                 style={{ display: 'none' }}
                 ref={imageUploader}
                 onChange={handleImageUpload}
+                /*need to validate image upload, required doesnt work*/
               />
               <button
                 type="button" /*default submit, will submit form before image is picked*/
@@ -114,6 +124,7 @@ export default function Form() {
                 placeholder="Enter website URL"
                 className="website-input"
                 onChange={(e) => setWebsite(e.target.value)}
+                required
               />
             </div>
           </div>
