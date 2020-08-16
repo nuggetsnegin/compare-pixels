@@ -79,8 +79,8 @@ export default function Result(props) {
           border-radius: 5px;
           box-shadow: 0 6px 50px 0 #cfd4d4;
           background-color: #ffffff;
-          max-height: 100vh;
-          max-width: 100vw;
+          max-height: 60vh;
+          max-width: 60vw;
           margin: 10vh auto;
           overflow: scroll;
         }
