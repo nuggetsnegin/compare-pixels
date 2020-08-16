@@ -55,6 +55,7 @@ export default function Form() {
 
   const validateWebsiteURL = () => {
     let isValidURL = false;
+    /* necessary for Pastel proxy API, another option could be inject it infront of the URL if not provided*/
     if (website.startsWith('https://') || website.startsWith('http://')) {
       isValidURL = true;
       setShowError(false);

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import FooterCompare from '../components/FooterCompare';
 export default function Result(props) {
   const [imageDimension, setImageDimension] = useState({});
+  const [showDesign, setShowDesign] = useState(true);
 
   const getImageDimensions = () => {
     const imageSize = new Image();
@@ -13,8 +14,9 @@ export default function Result(props) {
   };
 
   getImageDimensions();
-  const [showDesign, setShowDesign] = useState(true);
 
+  /*defining toggleVisibleContainer in parent/Result 
+  but it's being called in child component (FooterCompare) as a prop*/
   const toggleVisibleContainer = (containerName) => {
     if (containerName === 'design') {
       setShowDesign(true);
@@ -57,6 +59,7 @@ export default function Result(props) {
           ></iframe>
         </div>
       </div>
+      {/*passing the method as a prop to the child component*/}
       <FooterCompare toggleVisibleContainer={toggleVisibleContainer} />
       <style jsx>{`
         main {

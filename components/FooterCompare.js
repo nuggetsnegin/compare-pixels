@@ -5,6 +5,8 @@ export default function Footer({ toggleVisibleContainer }) {
     <footer>
       <div className="compare-buttons">
         <button
+        {/*toggleVisibleContainer doesn't need to know the state of it's parent (Result)
+        because we're passing the value back to Result/parent component*/}
           onClick={() => toggleVisibleContainer('design')}
           className="design-button"
         >
