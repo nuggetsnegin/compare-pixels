@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
+import axios from 'axios';
 import Chevron from '../public/images/Chevron.svg';
 
 export default function Form() {
@@ -9,16 +10,22 @@ export default function Form() {
   const router = useRouter();
 
   const [image, setImage] = useState(null);
-  const [website, setWebsite] = useState(null);
+  const [website, setWebsite] = useState('');
+  const [showError, setShowError] = useState(false);
 
   const onSubmit = (e) => {
     /*prevent page from refreshing*/
     e.preventDefault();
+    validateWebsiteURL();
+    usePastelProxy();
 
-    router.push({
-      pathname: '/result',
-      query: { image: image, website: website },
-    });
+    console.log(showError);
+    if (showError === false) {
+      router.push({
+        pathname: '/result',
+        query: { image: image, website: website },
+      });
+    }
   };
 
   const handleImageUpload = (e) => {
@@ -33,6 +40,29 @@ export default function Form() {
       /*clears the image on cancel, may not be the best UX? open to feedback about this decision*/
       setImage(null);
     }
+  };
+
+  const validateWebsiteURL = () => {
+    if (!website.startsWith('https://') || !website.startsWith('http://')) {
+      console.log('invalid url');
+      setShowError(true);
+    }
+  };
+
+  const usePastelProxy = async () => {
+    /*using axios because fetch isnt available for all browsers, IE/Opera*/
+    const response = await fetch('https://api.pastelcanvases.com/verify-url', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        url: website,
+        userAgent: window.navigator.userAgent,
+      }),
+    });
+    const result = await response.json();
   };
 
   return (
@@ -77,7 +107,7 @@ export default function Form() {
           </div>
         </fieldset>
 
-        <button className="oval">
+        <button className="oval" disabled={image === null && website === ''}>
           <img className="chevron" src={Chevron} alt="Chevron icon" />
         </button>
       </form>
@@ -121,6 +151,9 @@ export default function Form() {
           position: relative;
           top: -40px;
           left: 456px;
+        }
+        .oval:disabled {
+          opacity: 0.7;
         }
         .chevron {
           position: relative;
