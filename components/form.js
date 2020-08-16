@@ -121,10 +121,7 @@ export default function Form() {
                 </span>
               ) : null}
             </div>
-            <div
-              className="step-two-container"
-              style={{ border: '1px solid red' }}
-            >
+            <div className="step-two-container">
               <label htmlFor="step-two" className="step-labels step-two">
                 Step two
               </label>
@@ -137,6 +134,12 @@ export default function Form() {
                 onChange={(e) => setWebsite(e.target.value)}
                 required
               />
+              <button
+                className="submit-button oval"
+                disabled={image === null && website === ''}
+              >
+                <img className="chevron" src={Chevron} alt="Chevron icon" />
+              </button>
             </div>
             {showError ? (
               <span className="error website-error">
@@ -145,12 +148,6 @@ export default function Form() {
             ) : null}
           </div>
         </fieldset>
-        <button
-          className="submit-button oval"
-          disabled={image === null && website === ''}
-        >
-          <img className="chevron" src={Chevron} alt="Chevron icon" />
-        </button>
       </form>
       <style jsx>{`
         main {
@@ -159,7 +156,6 @@ export default function Form() {
           margin-top: 74px;
         }
         .form-container {
-          border: 1px solid red;
           display: grid;
           grid-template-columns: repeat(2, 1fr);
           margin-top: 20px;
@@ -191,7 +187,6 @@ export default function Form() {
           border: 1px solid #8855ff;
         }
         .oval {
-          display: inherit;
           width: 34px;
           height: 34px;
           background-image: linear-gradient(to bottom, #8855ff, #6536d3);
@@ -201,6 +196,10 @@ export default function Form() {
           opacity: 0.7;
         }
         .submit-button {
+          display: inline;
+          position: relative;
+          top: -38px;
+          left: 83px;
         }
         .chevron {
           position: relative;
@@ -230,7 +229,6 @@ export default function Form() {
         .step-labels {
           font-size: 18px;
           color: #39383e;
-          border: 1px solid red;
         }
         .step-two {
           position: relative;
@@ -244,8 +242,11 @@ export default function Form() {
         .error {
           font-size: 10px;
           color: red;
-          z-index: 2;
-          display: block;
+        }
+        .website-error {
+          position: relative;
+          left: 222px;
+          top: -29px;
         }
       `}</style>
     </main>
