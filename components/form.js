@@ -98,11 +98,6 @@ export default function Form() {
           <div className="form-container">
             <div className="step-one-container">
               <label className="step-labels">Step one</label>
-              {isSubmitted && image === null ? (
-                <span className="error image-error">
-                  No valid image uploaded.
-                </span>
-              ) : null}
               <input
                 name="step-one"
                 id="step-one"
@@ -120,8 +115,16 @@ export default function Form() {
               >
                 Upload image
               </button>
+              {isSubmitted && image === null ? (
+                <span className="error image-error">
+                  No valid image uploaded.
+                </span>
+              ) : null}
             </div>
-            <div className="step-two-container">
+            <div
+              className="step-two-container"
+              style={{ border: '1px solid red' }}
+            >
               <label htmlFor="step-two" className="step-labels step-two">
                 Step two
               </label>
@@ -135,14 +138,17 @@ export default function Form() {
                 required
               />
             </div>
+            {showError ? (
+              <span className="error website-error">
+                Sorry, Pastel couldn't load this site.
+              </span>
+            ) : null}
           </div>
         </fieldset>
-        {showError ? (
-          <span className="error website-error">
-            Sorry, Pastel couldn't load this site.
-          </span>
-        ) : null}
-        <button className="oval" disabled={image === null && website === ''}>
+        <button
+          className="submit-button oval"
+          disabled={image === null && website === ''}
+        >
           <img className="chevron" src={Chevron} alt="Chevron icon" />
         </button>
       </form>
@@ -190,12 +196,11 @@ export default function Form() {
           height: 34px;
           background-image: linear-gradient(to bottom, #8855ff, #6536d3);
           border-radius: 50%;
-          position: relative;
-          top: -40px;
-          left: 456px;
         }
         .oval:disabled {
           opacity: 0.7;
+        }
+        .submit-button {
         }
         .chevron {
           position: relative;
@@ -240,16 +245,7 @@ export default function Form() {
           font-size: 10px;
           color: red;
           z-index: 2;
-        }
-        .website-error {
-          position: relative;
-          top: -10px;
-          left: 263px;
-        }
-        .image-error {
-          position: relative;
-          top: 78px;
-          left: -67px;
+          display: block;
         }
       `}</style>
     </main>

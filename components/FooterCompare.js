@@ -1,30 +1,19 @@
 import AdLogo from '../public/images/AdLogo.svg';
 
-export default function Footer() {
-  let showDesign = true;
-
-  const compareThemes = {
-    show: {
-      visibility: 'visible',
-      opacity: 1,
-      transition: 'visibility 0s linear 0s, opacity 300ms',
-    },
-    hide: {
-      visibility: 'hidden',
-      opacity: 0,
-      transition: 'visibility 0s linear 300ms, opacity 300ms',
-    },
-  };
-
-  const ThemeContext = React.createContext(compareThemes.show);
-
+export default function Footer({ toggleVisibleContainer }) {
   return (
     <footer>
       <div className="compare-buttons">
-        <button onClick={showDesign} className="design-button">
+        <button
+          onClick={() => toggleVisibleContainer('design')}
+          className="design-button"
+        >
           Design
         </button>
-        <button onClick={!showDesign} className="website-button">
+        <button
+          onClick={() => toggleVisibleContainer('website')}
+          className="website-button"
+        >
           Website
         </button>
       </div>
@@ -35,7 +24,9 @@ export default function Footer() {
           <p className="feedback-question">Spot any issues on the website?</p>
           <p className="feedback-link">
             Share feedback on live websites with Pastel{' '}
-            <span>Get started now</span>
+            <a href="https://usepastel.com/" target="_blank">
+              Get started now
+            </a>
           </p>
         </div>
       </div>
@@ -99,8 +90,8 @@ export default function Footer() {
           outline: none;
           height: 25px; /*fix height jump*/
         }
-        span {
-          text-decoration: underline;
+        a {
+          color: #ffffff;
         }
       `}</style>
     </footer>
