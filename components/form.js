@@ -1,20 +1,33 @@
-import { useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
+import { useRouter } from 'next/router';
 import Chevron from '../public/images/Chevron.svg';
+import { Context } from '../components/Store';
 
 export default function Form() {
   /* Using hook 'useRef', initializing as empty
   src: https://react-hooks-cheatsheet.com/useRef*/
   const imageUploader = useRef(null);
+  const router = useRouter();
 
   const [image, setImage] = useState(null);
   const [website, setWebsite] = useState(null);
+  const [redirect, setRedirect] = useState(false);
+  const [state, dispatch] = useContext(Context);
 
   const onSubmit = (e) => {
     /*prevent page from refreshing*/
     e.preventDefault();
-    console.log(e);
+
+    // TODO: Click onSubmit once, state is half fufilled, click twice it's there, redirect doesn't have state
+    dispatch({ type: 'SET_IMAGE', payload: image });
+    dispatch({ type: 'SET_WEBSITE', payload: website });
+
+    console.log(state);
+    // setRedirect(true);
+    if (state.image && state.website) {
+      router.push('/result');
+    }
   };
-  console.log(website);
 
   const handleImageUpload = (e) => {
     const imageUploaded = e.target.files;
