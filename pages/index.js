@@ -12,6 +12,9 @@ export default function Home() {
       </Head>
       <div className="content">
         <Header />
+        <div className="small-resolution">
+          <p>Switch to a larger device to try this out.</p>
+        </div>
         <Form />
       </div>
 

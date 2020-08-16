@@ -1,11 +1,32 @@
 import AdLogo from '../public/images/AdLogo.svg';
 
 export default function Footer() {
+  let showDesign = true;
+
+  const compareThemes = {
+    show: {
+      visibility: 'visible',
+      opacity: 1,
+      transition: 'visibility 0s linear 0s, opacity 300ms',
+    },
+    hide: {
+      visibility: 'hidden',
+      opacity: 0,
+      transition: 'visibility 0s linear 300ms, opacity 300ms',
+    },
+  };
+
+  const ThemeContext = React.createContext(compareThemes.show);
+
   return (
     <footer>
       <div className="compare-buttons">
-        <button className="design-button">Design</button>
-        <button className="website-button">Website</button>
+        <button onClick={showDesign} className="design-button">
+          Design
+        </button>
+        <button onClick={!showDesign} className="website-button">
+          Website
+        </button>
       </div>
 
       <div className="feedback-logo">

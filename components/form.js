@@ -222,7 +222,7 @@ export default function Form() {
           background-color: #ffffff;
         }
         .website-input:focus {
-          outline: none !important;
+          outline: none;
           border-color: #8855ff;
         }
       `}</style>
