@@ -24,9 +24,6 @@ body {
   form {
     display: none;
   }
-  h2 {
-    width: auto;
-  }
   .small-resolution {
     display: flex;
     justify-content: center;
