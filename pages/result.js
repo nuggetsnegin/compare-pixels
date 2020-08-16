@@ -41,7 +41,13 @@ export default function Result(props) {
         <a className="start-over">Start Over</a>
       </Link>
       <div className="card">
-        <div className="card-inner">
+        <div
+          className="card-inner"
+          style={{
+            width: imageDimension.width + 'px',
+            height: imageDimension.height + 'px',
+          }}
+        >
           <img
             style={showDesign ? compareThemes.show : compareThemes.hide}
             src={props ? props.props.image : 'No image uploaded.'}
@@ -70,11 +76,11 @@ export default function Result(props) {
           flex: 1 0 auto;
         }
         .card-inner {
-          width: 736px;
-          height: 516px;
           border-radius: 5px;
           box-shadow: 0 6px 50px 0 #cfd4d4;
           background-color: #ffffff;
+          max-height: 100vh;
+          max-width: 100vw;
           margin: 10vh auto;
           overflow: scroll;
         }
