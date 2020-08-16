@@ -1,17 +1,38 @@
+import FooterCompare from '../components/FooterCompare';
 export default function Result(props) {
   return (
-    <div>
-      hello
-      <img src={props ? props.props.image : 'No image uploaded.'} />
-      <div>{props ? props.props.website : 'No website provided.'}</div>
-      <iframe></iframe>
-      <button>Mockup</button>
-      <button>Website</button>
+    <main>
+      <div className="card">
+        <div className="card-inner">
+          {/* <img src={props ? props.props.image : 'No image uploaded.'} /> */}
+          {/* <iframe>
+            {props ? props.props.website : 'No website provided.'}
+          </iframe> */}
+        </div>
+      </div>
+      <FooterCompare />
       <style jsx>{`
-        width: 100vh;
-        background: red;
+        main {
+          display: flex;
+          flex-direction: column;
+          min-height: 100vh;
+        }
+
+        .card {
+          background-color: #fafbfb;
+          width: 100vw;
+          flex: 1 0 auto;
+        }
+        .card-inner {
+          width: 736px;
+          height: 516px;
+          border-radius: 5px;
+          box-shadow: 0 6px 50px 0 #cfd4d4;
+          background-color: #ffffff;
+          margin: 10vh auto;
+        }
       `}</style>
-    </div>
+    </main>
   );
 }
 

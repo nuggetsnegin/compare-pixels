@@ -16,11 +16,8 @@ export default function Form() {
   const onSubmit = (e) => {
     /*prevent page from refreshing*/
     e.preventDefault();
-    validateWebsiteURL();
-    let show = usePastelProxy();
-
-    console.log(showError);
-    if (show === false) {
+    usePastelProxy();
+    if (!showError) {
       router.push({
         pathname: '/result',
         query: { image: image, website: website },
@@ -47,6 +44,9 @@ export default function Form() {
     if (website.startsWith('https://') || website.startsWith('http://')) {
       console.log('valid url');
       isValidURL = true;
+      setShowError(false);
+    } else {
+      setShowError(true);
     }
     return isValidURL;
   };
@@ -70,9 +70,11 @@ export default function Form() {
         }
       );
       const result = await response.json();
-      console.log(result);
+      setShowError(false);
+      setWebsite(result.proxyURL.href);
+    } else {
+      setShowError(true);
     }
-    return isValidURL;
   };
 
   return (
@@ -116,7 +118,7 @@ export default function Form() {
             </div>
           </div>
         </fieldset>
-
+        {showError ? <span>oops</span> : null}
         <button className="oval" disabled={image === null && website === ''}>
           <img className="chevron" src={Chevron} alt="Chevron icon" />
         </button>
