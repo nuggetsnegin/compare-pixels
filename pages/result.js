@@ -25,13 +25,9 @@ export default function Result(props) {
   const compareThemes = {
     show: {
       display: 'block',
-      opacity: 1,
-      transition: '0s linear 0s, opacity 3000ms',
     },
     hide: {
       display: 'none',
-      opacity: 0,
-      transition: '0s linear 300ms, opacity 3000ms',
     },
   };
 
