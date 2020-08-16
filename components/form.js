@@ -97,8 +97,12 @@ export default function Form() {
         <fieldset>
           <div className="form-container">
             <div className="step-one-container">
-              <label className="step-labels">Step one</label>{' '}
-              {isSubmitted && image === null ? 'No Image Uploaded' : null}
+              <label className="step-labels">Step one</label>
+              {isSubmitted && image === null ? (
+                <span className="error image-error">
+                  No valid image uploaded.
+                </span>
+              ) : null}
               <input
                 name="step-one"
                 id="step-one"
@@ -108,10 +112,9 @@ export default function Form() {
                 style={{ display: 'none' }}
                 ref={imageUploader}
                 onChange={handleImageUpload}
-                /*need to validate image upload, required doesnt work*/
               />
               <button
-                type="button" /*default submit, will submit form before image is picked*/
+                type="button" /*default submit, changed to button so form will not submit before image is picked*/
                 className="upload-img"
                 onClick={() => imageUploader.current.click()}
               >
@@ -134,7 +137,11 @@ export default function Form() {
             </div>
           </div>
         </fieldset>
-        {showError ? <span>oops</span> : null}
+        {showError ? (
+          <span className="error website-error">
+            Sorry, Pastel couldn't load this site.
+          </span>
+        ) : null}
         <button className="oval" disabled={image === null && website === ''}>
           <img className="chevron" src={Chevron} alt="Chevron icon" />
         </button>
@@ -146,6 +153,7 @@ export default function Form() {
           margin-top: 74px;
         }
         .form-container {
+          border: 1px solid red;
           display: grid;
           grid-template-columns: repeat(2, 1fr);
           margin-top: 20px;
@@ -168,10 +176,16 @@ export default function Form() {
           border: none;
           cursor: pointer;
         }
-        button:focus {
-          outline-color: #6536d3;
+        button:disabled {
+          cursor: auto;
+        }
+        button:focus,
+        .website-input:focus {
+          outline: none;
+          border: 1px solid #8855ff;
         }
         .oval {
+          display: inherit;
           width: 34px;
           height: 34px;
           background-image: linear-gradient(to bottom, #8855ff, #6536d3);
@@ -211,6 +225,7 @@ export default function Form() {
         .step-labels {
           font-size: 18px;
           color: #39383e;
+          border: 1px solid red;
         }
         .step-two {
           position: relative;
@@ -221,9 +236,20 @@ export default function Form() {
           border: solid 1px #c6c6c6;
           background-color: #ffffff;
         }
-        .website-input:focus {
-          outline: none;
-          border-color: #8855ff;
+        .error {
+          font-size: 10px;
+          color: red;
+          z-index: 2;
+        }
+        .website-error {
+          position: relative;
+          top: -10px;
+          left: 263px;
+        }
+        .image-error {
+          position: relative;
+          top: 78px;
+          left: -67px;
         }
       `}</style>
     </main>
