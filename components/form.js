@@ -1,7 +1,6 @@
-import { useContext, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import Chevron from '../public/images/Chevron.svg';
-import { Context } from '../components/Store';
 
 export default function Form() {
   /* Using hook 'useRef', initializing as empty
@@ -11,22 +10,15 @@ export default function Form() {
 
   const [image, setImage] = useState(null);
   const [website, setWebsite] = useState(null);
-  const [redirect, setRedirect] = useState(false);
-  const [state, dispatch] = useContext(Context);
 
   const onSubmit = (e) => {
     /*prevent page from refreshing*/
     e.preventDefault();
 
-    // TODO: Click onSubmit once, state is half fufilled, click twice it's there, redirect doesn't have state
-    dispatch({ type: 'SET_IMAGE', payload: image });
-    dispatch({ type: 'SET_WEBSITE', payload: website });
-
-    console.log(state);
-    // setRedirect(true);
-    if (state.image && state.website) {
-      router.push('/result');
-    }
+    router.push({
+      pathname: '/result',
+      query: { image: image, website: website },
+    });
   };
 
   const handleImageUpload = (e) => {

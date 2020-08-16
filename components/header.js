@@ -8,9 +8,10 @@ export default function Header() {
       <style jsx>{`
         .header-container {
           margin: 0 auto;
+          border: 1px solid red;
           margin-top: 180px;
           text-align: center;
-          width: 1024px;
+          width: 55vw;
         }
         h1 {
           color: #222222;
