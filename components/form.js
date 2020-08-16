@@ -17,10 +17,10 @@ export default function Form() {
     /*prevent page from refreshing*/
     e.preventDefault();
     validateWebsiteURL();
-    usePastelProxy();
+    let show = usePastelProxy();
 
     console.log(showError);
-    if (showError === false) {
+    if (show === false) {
       router.push({
         pathname: '/result',
         query: { image: image, website: website },
@@ -43,26 +43,36 @@ export default function Form() {
   };
 
   const validateWebsiteURL = () => {
-    if (!website.startsWith('https://') || !website.startsWith('http://')) {
-      console.log('invalid url');
-      setShowError(true);
+    let isValidURL = false;
+    if (website.startsWith('https://') || website.startsWith('http://')) {
+      console.log('valid url');
+      isValidURL = true;
     }
+    return isValidURL;
   };
 
   const usePastelProxy = async () => {
+    let isValidURL = validateWebsiteURL();
     /*using axios because fetch isnt available for all browsers, IE/Opera*/
-    const response = await fetch('https://api.pastelcanvases.com/verify-url', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify({
-        url: website,
-        userAgent: window.navigator.userAgent,
-      }),
-    });
-    const result = await response.json();
+    if (isValidURL === true) {
+      const response = await fetch(
+        'https://api.pastelcanvases.com/verify-url',
+        {
+          method: 'post',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify({
+            url: website,
+            userAgent: window.navigator.userAgent,
+          }),
+        }
+      );
+      const result = await response.json();
+      console.log(result);
+    }
+    return isValidURL;
   };
 
   return (
