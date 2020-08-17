@@ -121,7 +121,7 @@ export default function Form() {
                 name="step-one"
                 id="step-one"
                 type="file"
-                accept="image/*" /*only accept image files including .gif (unsure if we should allow gifs/use case for it?)*/
+                accept="image/*" /*default to only accept image files*/
                 multiple={false}
                 style={{ display: 'none' }}
                 ref={imageUploader}
