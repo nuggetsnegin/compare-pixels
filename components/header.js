@@ -26,6 +26,17 @@ export default function Header() {
           width: 440px;
           margin: 0 auto;
         }
+
+        @media (max-width: 768px) {
+          h1 {
+            white-space: nowrap;
+            font-size: 2rem;
+          }
+          h2 {
+            width: auto;
+            font-size: 1.5rem;
+          }
+        }
       `}</style>
     </div>
   );
