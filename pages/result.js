@@ -79,9 +79,9 @@ export default function Result(props) {
           box-shadow: 0 6px 50px 0 #cfd4d4;
           background-color: #ffffff;
           max-height: 60vh;
-          max-width: 60vw;
+          max-width: 90vw;
           margin: 10vh auto;
-          overflow: scroll;
+          overflow: auto;
         }
         .start-over {
           display: flex;
