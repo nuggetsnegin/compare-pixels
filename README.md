@@ -1,5 +1,5 @@
 # Compare Pixels
-Tech challenge for [Pastel](https://usepastel.com/) ╰(*°▽°*)╯
+Tech challenge for [Pastel](https://usepastel.com/)!
 ![Compare Pixels](https://i.imgur.com/1mreTg5.png)
 ![Compare Pixels](https://i.imgur.com/32TYWMX.png)
 
