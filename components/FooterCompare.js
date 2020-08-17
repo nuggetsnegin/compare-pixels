@@ -1,6 +1,11 @@
 import AdLogo from '../public/images/AdLogo.svg';
 
-export default function Footer({ toggleVisibleContainer }) {
+export default function Footer({ toggleVisibleContainer, showDesign }) {
+  const focusStyle = {
+    color: '#ffffff',
+    'border-bottom': 'solid 1.6px #ffffff',
+  };
+
   return (
     <footer>
       <div className="compare-buttons">
@@ -8,6 +13,7 @@ export default function Footer({ toggleVisibleContainer }) {
           /*toggleVisibleContainer doesn't need to know the state of it's parent (Result)
         because we're passing the value back to Result/parent component*/
           onClick={() => toggleVisibleContainer('design')}
+          style={showDesign ? focusStyle : null}
           className="design-button"
         >
           Design
@@ -15,6 +21,7 @@ export default function Footer({ toggleVisibleContainer }) {
         <button
           onClick={() => toggleVisibleContainer('website')}
           className="website-button"
+          style={!showDesign ? focusStyle : null}
         >
           Website
         </button>
@@ -84,13 +91,12 @@ export default function Footer({ toggleVisibleContainer }) {
           border: none;
           background: none;
           padding: none;
-          height: 25px;
+          height: 25px; /*fix height jump*/
         }
         button:focus {
           color: #ffffff;
           border-bottom: solid 1.6px #ffffff;
           outline: none;
-          height: 25px; /*fix height jump*/
         }
         a {
           color: #ffffff;

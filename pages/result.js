@@ -50,7 +50,6 @@ export default function Result(props) {
             style={showDesign ? compareThemes.show : compareThemes.hide}
             src={props ? props.props.image : 'No image uploaded.'}
           />
-
           <iframe
             height={imageDimension.height + 'px'}
             width={imageDimension.width + 'px'}
@@ -60,7 +59,10 @@ export default function Result(props) {
         </div>
       </div>
       {/*passing the method as a prop to the child*/}
-      <FooterCompare toggleVisibleContainer={toggleVisibleContainer} />
+      <FooterCompare
+        toggleVisibleContainer={toggleVisibleContainer}
+        showDesign={showDesign}
+      />
       <style jsx>{`
         main {
           display: flex;

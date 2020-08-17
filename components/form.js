@@ -54,13 +54,16 @@ export default function Form() {
   };
 
   const validateWebsiteURL = () => {
+    const prefix = 'http://';
     let isValidURL = false;
     /* necessary for Pastel proxy API, another option could be inject it infront of the URL if not provided*/
+    /*is there a better way to do this? should I append http/https?*/
     if (website.startsWith('https://') || website.startsWith('http://')) {
       isValidURL = true;
       setShowError(false);
     } else {
-      setShowError(true);
+      /*forcefully prepending http to url - can this be done better/less bruteforcey and can I finda way to check if the site is secure and append https instead?*/
+      setWebsite(prefix + website);
     }
     return isValidURL;
   };
@@ -221,7 +224,7 @@ export default function Form() {
           height: 42px;
           border-radius: 5px;
           margin-top: 18px;
-          font-weight: 500;
+          font-weight: 500; /*despite showing in the inspector/computed as font-weight: 500 it doesn't display as such, trying different ways of importing didn't solve the problem :( */
         }
         .upload-img {
           background-color: #919d9d;
