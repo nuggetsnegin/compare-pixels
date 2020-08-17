@@ -58,4 +58,4 @@ npm run dev
 * Handling user input for 'http/https' the Pastel proxy requires the input to have http/https and I perform a check on it but it doesn't feel like the best UX. Preferably would like to be able for the user to input without http/https and prefix it. I hardcoded this by always prefixing http but removed it because i'm not sure if I should be altering the user's input?
 
 ### Fun fact
-* I used the homepage mockup with the project website to test how accurate it was 😅
+* I used the homepage mockup with the project website to test how accurate it was 😅 (felt very inception'y)
