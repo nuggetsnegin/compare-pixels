@@ -105,7 +105,7 @@ export default function Form() {
         <fieldset>
           <div className="form-container">
             <div className="step-one-container">
-              <label className="step-labels">Step one</label>
+              <label className="step-labels step-one">Step one</label>
               <input
                 name="step-one"
                 id="step-one"
@@ -205,7 +205,7 @@ export default function Form() {
           display: inline;
           position: relative;
           top: -37px;
-          left: 83px;
+          left: 84px;
         }
         .chevron {
           position: relative;
@@ -237,6 +237,10 @@ export default function Form() {
         .step-labels {
           font-size: 18px;
           color: #39383e;
+        }
+        .step-one {
+          position: relative;
+          left: 7px;
         }
         .step-two {
           position: relative;
