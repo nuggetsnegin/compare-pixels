@@ -45,11 +45,22 @@ export default function Form() {
     const imageUploaded = e.target.files;
 
     if (imageUploaded && imageUploaded.length > 0) {
+      const imageType = imageUploaded[0].type.split('/').pop().toLowerCase();
       /*load image to URL so we can use as an image src value to pass as a prop
       src: https://developer.mozilla.org/en-US/docs/Web/API/URL/createObjectURL*/
-      const imageURL = URL.createObjectURL(imageUploaded[0]);
-      setIsSubmitted(false);
-      setImage(imageURL);
+      if (
+        imageType != 'jpeg' &&
+        imageType != 'png' &&
+        imageType != 'bmp' &&
+        imageType != 'jpg'
+      ) {
+        setIsSubmitted(false);
+        setImage(null);
+      } else {
+        const imageURL = URL.createObjectURL(imageUploaded[0]);
+        setIsSubmitted(false);
+        setImage(imageURL);
+      }
     } else {
       /*clears the image on cancel, may not be the best UX? open to feedback about this decision*/
       setIsSubmitted(false);
