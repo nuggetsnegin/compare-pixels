@@ -36,7 +36,7 @@ export default function Result(props) {
   return (
     <main>
       <Link href="/">
-        <a className="start-over">Start Over</a>
+        <a className="start-over">Go back</a>
       </Link>
       <div className="card">
         <div
@@ -59,7 +59,7 @@ export default function Result(props) {
           ></iframe>
         </div>
       </div>
-      {/*passing the method as a prop to the child component*/}
+      {/*passing the method as a prop to the child*/}
       <FooterCompare toggleVisibleContainer={toggleVisibleContainer} />
       <style jsx>{`
         main {
@@ -86,9 +86,9 @@ export default function Result(props) {
         .start-over {
           display: flex;
           justify-content: flex-end;
-          color: #8855ff;
+          color: #222222;
           text-decoration: none;
-          padding: 5px 10px;
+          padding: 10px 25px;
         }
       `}</style>
     </main>
