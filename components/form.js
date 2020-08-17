@@ -164,7 +164,7 @@ export default function Form() {
         }
         form {
           width: 512px;
-          height: 124px;
+          height: 134px;
           border-radius: 10px;
           box-shadow: 0 6px 50px 0 #cfd4d4;
           background-color: #ffffff;
@@ -199,7 +199,7 @@ export default function Form() {
         .submit-button {
           display: inline;
           position: relative;
-          top: -38px;
+          top: -39px;
           left: 83px;
         }
         .chevron {
@@ -221,11 +221,13 @@ export default function Form() {
           height: 42px;
           border-radius: 5px;
           margin-top: 18px;
+          font-weight: 500;
         }
         .upload-img {
           background-color: #919d9d;
           color: #ffffff;
           margin-left: 35px;
+          margin-right: 20px;
         }
         .step-labels {
           font-size: 18px;
@@ -239,6 +241,7 @@ export default function Form() {
           box-shadow: inset 1px 2px 7px 0 rgba(96, 96, 96, 0.31);
           border: solid 1px #c6c6c6;
           background-color: #ffffff;
+          margin-right: 84px;
         }
         .error {
           font-size: 10px;
