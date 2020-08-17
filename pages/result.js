@@ -5,9 +5,11 @@ export default function Result(props) {
   const [imageDimension, setImageDimension] = useState({});
   const [showDesign, setShowDesign] = useState(true);
 
+  /*grabbing image size 'state' to change the iframe size programmatically*/
   const getImageDimensions = () => {
     const imageSize = new Image();
     imageSize.src = props.props.image;
+    /*had to use onload for the prop or else the image is undefined during the check*/
     imageSize.onload = function (e) {
       setImageDimension({ height: imageSize.height, width: imageSize.width });
     };
@@ -50,7 +52,6 @@ export default function Result(props) {
             style={showDesign ? compareThemes.show : compareThemes.hide}
             src={props ? props.props.image : 'No image uploaded.'}
           />
-
           <iframe
             height={imageDimension.height + 'px'}
             width={imageDimension.width + 'px'}
@@ -59,8 +60,11 @@ export default function Result(props) {
           ></iframe>
         </div>
       </div>
-      {/*passing the method as a prop to the child*/}
-      <FooterCompare toggleVisibleContainer={toggleVisibleContainer} />
+      {/*passing the method toggleVisibleContainer as a prop to the child, showDesign so we can implement programmatic focus state*/}
+      <FooterCompare
+        toggleVisibleContainer={toggleVisibleContainer}
+        showDesign={showDesign}
+      />
       <style jsx>{`
         main {
           display: flex;
@@ -98,6 +102,7 @@ export default function Result(props) {
   );
 }
 
+/*grabbing state of image and website from Form component*/
 Result.getInitialProps = (context) => {
   return {
     props: {

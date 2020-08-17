@@ -17,7 +17,6 @@ export default function Home() {
         </div>
         <Form />
       </div>
-
       <Footer />
 
       <style jsx>{`

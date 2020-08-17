@@ -12,9 +12,10 @@ export default function Form() {
   const [website, setWebsite] = useState('');
   const [proxyUrl, setProxyUrl] = useState(null);
   const [showError, setShowError] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  /* showError wasn't updating state correctly when setting it onSubmit (or anywhere), useEffect listens to showError changing
+  /* showError wasn't updating state correctly when setting it onSubmit (or anywhere), useEffect listens to showError, image, isSubmmited, and proxyURL changing
   if it changes we call redirectForm*/
   useEffect(() => {
     validateAndRedirectForm();
@@ -24,10 +25,13 @@ export default function Form() {
   const validateAndRedirectForm = () => {
     /*check whether to redirect, only redirect if there's no error, image and website exists*/
     if (isSubmitted && !showError && proxyUrl && image) {
-      router.push({
-        pathname: '/result',
-        query: { image: image, website: proxyUrl },
-      });
+      router.push(
+        {
+          pathname: '/result',
+          query: { image: image, website: proxyUrl },
+        },
+        '/result'
+      );
     }
   };
   const onSubmit = (e) => {
@@ -55,19 +59,22 @@ export default function Form() {
 
   const validateWebsiteURL = () => {
     let isValidURL = false;
-    /* necessary for Pastel proxy API, another option could be inject it infront of the URL if not provided*/
+    /* necessary for Pastel proxy API, another option could be inject it infront of the URL if not provided, should I manipulate the URL without the user's knowledge?
+    is there a better way to do this?*/
     if (website.startsWith('https://') || website.startsWith('http://')) {
       isValidURL = true;
       setShowError(false);
     } else {
       setShowError(true);
+      setErrorMessage(`Please use a URL
+      beginning with http:// or https://.`);
     }
     return isValidURL;
   };
 
   const usePastelProxy = async () => {
-    let isValidURL = validateWebsiteURL();
-    /*using axios because fetch isnt available for all browsers, IE/Opera*/
+    /*return value of validateWebsiteURL() is saved to isValidURL and is used against the proxy api*/
+    const isValidURL = validateWebsiteURL();
     if (isValidURL) {
       const response = await fetch(
         'https://api.pastelcanvases.com/verify-url',
@@ -103,14 +110,14 @@ export default function Form() {
                 name="step-one"
                 id="step-one"
                 type="file"
-                accept="image/*"
+                accept="image/*" /*only accept image files including .gif (unsure if we should allow gifs/use case for it?)*/
                 multiple={false}
                 style={{ display: 'none' }}
                 ref={imageUploader}
                 onChange={handleImageUpload}
               />
               <button
-                type="button" /*default submit, changed to button so form will not submit before image is picked*/
+                type="button" /*default is 'submit', changed to 'button' so form will not submit before image is picked*/
                 className="upload-img"
                 onClick={() => imageUploader.current.click()}
               >
@@ -143,9 +150,7 @@ export default function Form() {
               </button>
             </div>
             {showError ? (
-              <span className="error website-error">
-                Sorry, Pastel couldn't load this site.
-              </span>
+              <span className="error website-error">{errorMessage}</span>
             ) : null}
           </div>
         </fieldset>
@@ -221,7 +226,7 @@ export default function Form() {
           height: 42px;
           border-radius: 5px;
           margin-top: 18px;
-          font-weight: 500;
+          font-weight: 500; /*despite showing in the inspector/computed as font-weight: 500 it doesn't display as such, trying different ways of importing didn't solve the problem :( */
         }
         .upload-img {
           background-color: #919d9d;
@@ -249,8 +254,9 @@ export default function Form() {
         }
         .website-error {
           position: relative;
-          left: 213px;
+          left: 247px;
           top: -29px;
+          width: 170px;
         }
       `}</style>
     </main>
