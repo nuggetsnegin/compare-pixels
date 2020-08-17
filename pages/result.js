@@ -83,6 +83,9 @@ export default function Result(props) {
           margin: 10vh auto;
           overflow: auto;
         }
+        iframe {
+          border: none;
+        }
         .start-over {
           display: flex;
           justify-content: flex-end;
