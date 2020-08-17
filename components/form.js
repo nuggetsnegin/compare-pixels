@@ -199,7 +199,7 @@ export default function Form() {
         .submit-button {
           display: inline;
           position: relative;
-          top: -39px;
+          top: -37px;
           left: 83px;
         }
         .chevron {
@@ -235,7 +235,7 @@ export default function Form() {
         }
         .step-two {
           position: relative;
-          right: 30px;
+          right: 42px;
         }
         .website-input {
           box-shadow: inset 1px 2px 7px 0 rgba(96, 96, 96, 0.31);
@@ -249,7 +249,7 @@ export default function Form() {
         }
         .website-error {
           position: relative;
-          left: 222px;
+          left: 213px;
           top: -29px;
         }
       `}</style>
