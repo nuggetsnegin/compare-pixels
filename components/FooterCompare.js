@@ -3,7 +3,7 @@ import AdLogo from '../public/images/AdLogo.svg';
 export default function Footer({ toggleVisibleContainer, showDesign }) {
   const focusStyle = {
     color: '#ffffff',
-    'border-bottom': 'solid 1.6px #ffffff',
+    borderBottom: 'solid 1.6px #ffffff',
   };
 
   return (
