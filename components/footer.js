@@ -12,7 +12,7 @@ export default function Footer() {
           box-shadow: inset 0 5px 10px 0 rgba(0, 0, 0, 0.5);
           background-image: linear-gradient(to bottom, #4a4a4a, #222222 125%);
           width: 100vw;
-          height: 10vh;
+          height: 11vh;
           display: flex;
           justify-content: center;
           align-items: center;

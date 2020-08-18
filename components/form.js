@@ -175,7 +175,7 @@ export default function Form() {
         .form-container {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-          margin-top: 20px;
+          padding-top: 20px;
           text-align: center;
         }
         form {
@@ -215,7 +215,7 @@ export default function Form() {
         .submit-button {
           display: inline;
           position: relative;
-          top: -37px;
+          top: -39px;
           left: 84px;
         }
         .chevron {
@@ -251,11 +251,11 @@ export default function Form() {
         }
         .step-one {
           position: relative;
-          left: 7px;
+          left: 4px;
         }
         .step-two {
           position: relative;
-          right: 42px;
+          right: 45px;
         }
         .website-input {
           box-shadow: inset 1px 2px 7px 0 rgba(96, 96, 96, 0.31);
