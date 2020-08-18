@@ -30,11 +30,11 @@ export default function Result(props) {
     // Change to transition/opacity fade
     show: {
       opacity: '1',
-      transition: 'opacity 3s ease-in-out',
+      transition: 'opacity 1s ease-in-out',
     },
     hide: {
       opacity: '0',
-      transition: 'opacity 3s ease-in-out',
+      transition: 'opacity 1s ease-in-out',
     },
   };
 
@@ -85,21 +85,20 @@ export default function Result(props) {
           border-radius: 5px;
           box-shadow: 0 6px 50px 0 #cfd4d4;
           background-color: #ffffff;
-          max-height: 60vh;
+          max-height: 65vh;
           max-width: 90vw;
           margin: 5vh auto;
-          overflow: auto;
+          overflow: scroll;
         }
         iframe {
           border: none;
-          border: 3px solid red;
-          background: red;
         }
         img {
           position: relative;
           display: block;
           background: red;
           top: -${imageDimension.height + 5}px; /*dynamically setting relative location*/
+          margin-bottom: -${imageDimension.height}px; /*dynamically removing extra white space from using relative positioning*/
         }
         .start-over {
           display: flex;
