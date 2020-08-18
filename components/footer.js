@@ -18,6 +18,9 @@ export default function Footer() {
           align-items: center;
           flex-shrink: 0;
         }
+        img {
+          padding-top: 15px;
+        }
         p {
           color: #ffffff; /*fallback for alt text*/
         }
