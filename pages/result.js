@@ -88,7 +88,7 @@ export default function Result(props) {
           max-height: 65vh;
           max-width: 90vw;
           margin: 5vh auto;
-          overflow: scroll;
+          overflow: auto;
         }
         iframe {
           border: none;
@@ -96,7 +96,6 @@ export default function Result(props) {
         img {
           position: relative;
           display: block;
-          background: red;
           top: -${imageDimension.height + 5}px; /*dynamically setting relative location*/
           margin-bottom: -${imageDimension.height}px; /*dynamically removing extra white space from using relative positioning*/
         }
