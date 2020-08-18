@@ -2,7 +2,6 @@
 
 Tech challenge for [Pastel](https://usepastel.com/)!
 ![Compare Pixels](https://i.imgur.com/1mreTg5.png)
-![Compare Pixels](https://i.imgur.com/32TYWMX.png)
 
 [Live Link](https://compare-pixels.vercel.app/)
 
@@ -56,6 +55,6 @@ npm run dev
 * Was getting the image size before it was passed in as a prop (new Image() doesn't exist error), had to use onload 😅
 * Odd bug where font-weight:500 doesn't apply on the buttons despite the inspector and computed showing it has that font-weight. Tried different ways of importing the font-weight (declaring it in scope/global, styling the button in global - no luck) There seems to be some [issues](https://github.com/google/fonts/issues/1137) with the actual font but unsure if it's related to my problem 
 * Handling user input for 'http/https' the Pastel proxy requires the input to have http/https and I perform a check on it but it doesn't feel like the best UX. Preferably would like to be able for the user to input without http/https and prefix it. I hardcoded this by always prefixing http but removed it because i'm not sure if I should be altering the user's input?
-
+* Changing the functionality from show/hide to an opacity transition was a bit challenging. My solution seems a bit wacky (setting the img to relative positioning based off the height of the image inverted and adding a negative margin with that same height to remove the extra spacing from using relative positioning.) I'm curious if there is a better way to do this!
 ### Fun fact
 * I used the homepage mockup with the project website to test how accurate it was 😅 (felt very inception'y)
