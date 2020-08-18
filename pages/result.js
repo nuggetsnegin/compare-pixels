@@ -100,6 +100,9 @@ export default function Result(props) {
           display: block;
           top: -${imageDimension.height}px; /*dynamically setting relative location*/
           margin-bottom: -${imageDimension.height}px; /*dynamically removing extra white space from using relative positioning*/
+          /*manually reposition so it's exactly ontop of the image - note:look into why there's extra spacing*/
+          margin-top: -4px;
+          margin-left: -3px;
         }
         .start-over {
           display: flex;
