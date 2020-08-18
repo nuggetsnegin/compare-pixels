@@ -15,13 +15,13 @@ export default function Header() {
         h1 {
           color: #222222;
           font-weight: 700;
-          font-size: 2.6rem;
+          font-size: 2.625rem; /*42px*/
           margin-bottom: 17px;
         }
         h2 {
           color: #888888;
           font-weight: 400;
-          font-size: 1.6rem;
+          font-size: 1.625rem; /*26px*/
           margin-top: 17px;
           width: 440px;
           margin: 0 auto;
