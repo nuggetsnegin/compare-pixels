@@ -30,11 +30,11 @@ export default function Result(props) {
     // Change to transition/opacity fade
     show: {
       opacity: '1',
-      transition: 'opacity 1s ease-in-out',
+      transition: 'opacity 1s linear',
     },
     hide: {
       opacity: '0',
-      transition: 'opacity 1s ease-in-out',
+      transition: 'opacity 1s linear',
     },
   };
 
