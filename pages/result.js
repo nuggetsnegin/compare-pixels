@@ -92,6 +92,7 @@ export default function Result(props) {
         }
         img {
           display: block;
+          margin-top: -1px; /*extra spacing/border appearing by default*/
         }
         iframe {
           border: none;
