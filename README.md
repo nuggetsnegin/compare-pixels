@@ -60,6 +60,6 @@ npm run dev
 ### Potential Improvements
 * Error handling isn't the most robust (mostly catch-all error handling), aside from handling image types and trying to guide the user to images (default file upload is image), no other checks in place (maybe very large images would be a use case for more error handling?) Error handling for website input could be more verbose (website didn't load vs http/https or injected that somehow)
 * Stacking of image/website - I'm curious what other solutions I could've examined rather than position relative with the funky negative top positioning/negative bottom margin, my solution seemed the most intuitive based off experience with stacking elements and google search 
-* Smaller components? I think the Form component could be broken down 
+
 ### Fun fact
 * I used the homepage mockup with the project website to test how accurate it was 😅 (felt very inception'y)
