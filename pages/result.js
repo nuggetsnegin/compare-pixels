@@ -27,11 +27,14 @@ export default function Result(props) {
     }
   };
   const compareThemes = {
+    // Change to transition/opacity fade
     show: {
-      display: 'block',
+      opacity: '1',
+      transition: 'opacity 3s ease-in-out',
     },
     hide: {
-      display: 'none',
+      opacity: '0',
+      transition: 'opacity 3s ease-in-out',
     },
   };
 
@@ -48,16 +51,16 @@ export default function Result(props) {
             height: imageDimension.height + 'px',
           }}
         >
-          <img
-            style={showDesign ? compareThemes.show : compareThemes.hide}
-            src={props ? props.props.image : 'No image uploaded.'}
-          />
           <iframe
             height={imageDimension.height + 'px'}
             width={imageDimension.width + 'px'}
             style={!showDesign ? compareThemes.show : compareThemes.hide}
             src={props ? props.props.website : 'No website provided.'}
           ></iframe>
+          <img
+            style={showDesign ? compareThemes.show : compareThemes.hide}
+            src={props ? props.props.image : 'No image uploaded.'}
+          />
         </div>
       </div>
       {/*passing the method toggleVisibleContainer as a prop to the child, showDesign so we can implement programmatic focus state*/}
@@ -84,11 +87,19 @@ export default function Result(props) {
           background-color: #ffffff;
           max-height: 60vh;
           max-width: 90vw;
-          margin: 10vh auto;
+          margin: 5vh auto;
           overflow: auto;
         }
         iframe {
           border: none;
+          border: 3px solid red;
+          background: red;
+        }
+        img {
+          position: relative;
+          display: block;
+          background: red;
+          top: -${imageDimension.height + 5}px; /*dynamically setting relative location*/
         }
         .start-over {
           display: flex;
