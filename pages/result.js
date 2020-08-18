@@ -51,16 +51,16 @@ export default function Result(props) {
             height: imageDimension.height + 'px',
           }}
         >
+          <img
+            style={showDesign ? compareThemes.show : compareThemes.hide}
+            src={props ? props.props.image : 'No image uploaded.'}
+          />
           <iframe
             height={imageDimension.height + 'px'}
             width={imageDimension.width + 'px'}
             style={!showDesign ? compareThemes.show : compareThemes.hide}
             src={props ? props.props.website : 'No website provided.'}
           ></iframe>
-          <img
-            style={showDesign ? compareThemes.show : compareThemes.hide}
-            src={props ? props.props.image : 'No image uploaded.'}
-          />
         </div>
       </div>
       {/*passing the method toggleVisibleContainer as a prop to the child, showDesign so we can implement programmatic focus state*/}
@@ -92,8 +92,6 @@ export default function Result(props) {
         }
         iframe {
           border: none;
-        }
-        img {
           position: relative;
           display: block;
           top: -${imageDimension.height + 5}px; /*dynamically setting relative location*/
